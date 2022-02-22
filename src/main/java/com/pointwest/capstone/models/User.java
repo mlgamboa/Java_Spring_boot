@@ -1,6 +1,9 @@
 package com.pointwest.capstone.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Users")
@@ -18,6 +21,10 @@ public class User {
     @Column
     private long phoneNumber;
 
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private Set<Course> courses;
+
     public User() {
     }
 
@@ -32,9 +39,7 @@ public class User {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+
 
     public String getUsername() {
         return username;

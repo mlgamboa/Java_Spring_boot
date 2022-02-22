@@ -14,9 +14,13 @@ public class Course {
     @Column
     private String courseCode;
     @Column
-    private boolean isAvailable;
+    private boolean isAvailable = true;
     @Column
-    private boolean isFull;
+    private boolean isFull = false;
+
+    @ManyToOne()
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     public Course() {
     }

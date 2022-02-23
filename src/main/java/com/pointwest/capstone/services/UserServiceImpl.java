@@ -16,22 +16,26 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
 
     // Creating a user
-    public ResponseEntity createUser(User user){
-        String message = "User created successfully";
-        HttpStatus status = HttpStatus.CREATED;
-        boolean isDuplicate = false;
+//    public ResponseEntity createUser(User user){
+//        String message = "User created successfully";
+//        HttpStatus status = HttpStatus.CREATED;
+//        boolean isDuplicate = false;
+//
+//        for(User indivUser: userRepository.findAll()){
+//            if(user.getUsername().equalsIgnoreCase(indivUser.getUsername())){
+//                message = "Username already exists";
+//                status = HttpStatus.CONFLICT;
+//                isDuplicate = true;
+//            }
+//        }
+//        if(!isDuplicate){
+//            userRepository.save(user);
+//        }
+//        return new ResponseEntity(message, status);
+//    }
 
-        for(User indivUser: userRepository.findAll()){
-            if(user.getUsername().equalsIgnoreCase(indivUser.getUsername())){
-                message = "Username already exists";
-                status = HttpStatus.CONFLICT;
-                isDuplicate = true;
-            }
-        }
-        if(!isDuplicate){
-            userRepository.save(user);
-        }
-        return new ResponseEntity(message, status);
+    public void createUser(User user){
+        userRepository.save(user);
     }
 
 

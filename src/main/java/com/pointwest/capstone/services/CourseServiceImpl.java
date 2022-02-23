@@ -1,19 +1,31 @@
 package com.pointwest.capstone.services;
 
+import com.pointwest.capstone.config.JwtToken;
 import com.pointwest.capstone.models.Course;
+import com.pointwest.capstone.models.EnrolledCourse;
+import com.pointwest.capstone.models.User;
 import com.pointwest.capstone.repositories.CourseRepository;
+import com.pointwest.capstone.repositories.EnrolledCourseRepository;
+import com.pointwest.capstone.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class CourseServiceImpl implements CourseService{
 
     @Autowired
     private CourseRepository courseRepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    JwtToken jwtToken;
+    @Autowired
+    private EnrolledCourseRepository enrolledCourseRepository;
 
     public ResponseEntity createCourse(Course course){
         String message = "Course Successfully Added";
@@ -70,12 +82,18 @@ public class CourseServiceImpl implements CourseService{
 
 
     // Retrieving specific course
-
-//    public Optional<Course> findByCourseName(String courseName){
-//        return Optional.ofNullable(courseRepository.findByCourseName(courseName));
-//    }
     public ResponseEntity getSpecificCourse(Long id){
         Course courseToFind = courseRepository.findById(id).get();
         return new ResponseEntity(courseRepository.findById(id), HttpStatus.OK);
+    }
+
+    // Retrieving user's courses
+//    public Set<EnrolledCourse> getMyCourses(String stringToken){
+//        User student = userRepository.findByUsername(jwtToken.getUsernameFromToken(stringToken));
+//        return student.getEnrolledCourses();
+//    }
+
+    public Optional<Course> findByCourseName(String courseName){
+      return Optional.ofNullable(courseRepository.findByCourseName(courseName));
     }
 }

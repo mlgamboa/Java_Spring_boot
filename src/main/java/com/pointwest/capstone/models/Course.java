@@ -1,6 +1,7 @@
 package com.pointwest.capstone.models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Courses")
@@ -18,9 +19,8 @@ public class Course {
     @Column
     private boolean isFull = false;
 
-    @ManyToOne()
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @OneToMany(mappedBy = "course")
+    Set<EnrolledCourse> enrolledCourses;
 
     public Course() {
     }
@@ -71,4 +71,12 @@ public class Course {
     public void setFull(boolean full) {
         isFull = full;
     }
+
+//    public Set<EnrolledCourse> getEnrolledCourses() {
+//        return enrolledCourses;
+//    }
+
+//    public void setEnrolledCourses(Set<EnrolledCourse> enrolledCourses) {
+//        this.enrolledCourses = enrolledCourses;
+//    }
 }

@@ -1,10 +1,9 @@
 package com.pointwest.capstone.repositories;
 
-import com.pointwest.capstone.models.Course;
+import com.pointwest.capstone.models.EnrolledCourse;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CourseRepository extends CrudRepository<Course, Object> {
-    Course findByCourseName(String courseName);
+public interface EnrolledCourseRepository extends CrudRepository<EnrolledCourse, Object> {
 }

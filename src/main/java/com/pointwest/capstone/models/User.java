@@ -19,16 +19,16 @@ public class User {
     @Column
     private String email;
     @Column
-    private long phoneNumber;
+    private String phoneNumber;
 
     @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private Set<Course> courses;
+    private Set<EnrolledCourse> enrolledCourses;
 
     public User() {
     }
 
-    public User(String username, String password, String email, long phoneNumber) {
+
+    public User(String username, String password, String email, String phoneNumber) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -65,11 +65,19 @@ public class User {
         this.email = email;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+//    public Set<EnrolledCourse> getEnrolledCourses() {
+//        return enrolledCourses;
+//    }
+
+//    public void setEnrolledCourses(Set<EnrolledCourse> enrolledCourses) {
+//        this.enrolledCourses = enrolledCourses;
+//    }
 }

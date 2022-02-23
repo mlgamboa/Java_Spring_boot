@@ -1,9 +1,11 @@
 package com.pointwest.capstone.services;
 
 import com.pointwest.capstone.models.Course;
+import com.pointwest.capstone.models.EnrolledCourse;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Optional;
+import java.util.Set;
 
 public interface CourseService {
 
@@ -20,9 +22,10 @@ public interface CourseService {
     ResponseEntity archiveCourse(Long id);
 
     // Retrieve specific course
-//    Optional<Course> findByCourseName(String CourseName);
     ResponseEntity getSpecificCourse(Long id);
 
+//    Set<EnrolledCourse> getMyCourses(String stringToken);
 
+    Optional<Course> findByCourseName(String CourseName);
 
 }

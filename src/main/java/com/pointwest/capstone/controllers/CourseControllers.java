@@ -46,4 +46,10 @@ public class CourseControllers {
     public ResponseEntity<Object> getSpecificCourse(@PathVariable Long courseId){
         return courseService.getSpecificCourse(courseId);
     }
+
+    // Retrieve user's courses
+//    @RequestMapping(value = "/courses/myCourses", method = RequestMethod.GET)
+//    public ResponseEntity<Object> getMyCourses(@RequestHeader(value = "Authorization") String stringToken){
+//        return new ResponseEntity<>(courseService.getMyCourses(stringToken), HttpStatus.OK);
+//    }
 }
